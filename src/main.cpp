@@ -1,22 +1,19 @@
 #include <Arduino.h>
+#include "ESP32_Servo.h"
 
-int motorPin[4] = {34, 35, 32, 33};
+const int motorPin[4] = {34, 35, 32, 33};
+const int Servopin = 15;
+
+Servo myServo;
 
 void setup() {
-  // for(int i = 0; i < 4; i++)
-  // {
-  //   ledcSetup(i, 12800, 8);
-  //   ledcAttachPin(motorPin[i], i);
-  // }
+  for(int i = 0; i < 4; i++)
+  {
+    ledcSetup(i, 12800, 8);
+    ledcAttachPin(motorPin[i], i);
+  }
 
-    ledcSetup(0, 12800, 8);
-    ledcAttachPin(motorPin[0], 0);
-    ledcSetup(1, 12800, 8);
-    ledcAttachPin(motorPin[1], 1);
-    ledcSetup(2, 12800, 8);
-    ledcAttachPin(motorPin[2], 2);
-    ledcSetup(3, 12800, 8);
-    ledcAttachPin(motorPin[3], 3);
+  myServo.attach(Servopin);
 }
 
 void setmotor(int speed)
