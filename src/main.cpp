@@ -46,7 +46,7 @@ void setmotor(int speed)
 
 void Handleservo(int angle)
 {
-  // myServo.write(angle);
+  // myServo.write(angle / 10 + 90);
 }
 
 void loop() {
