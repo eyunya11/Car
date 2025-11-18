@@ -7,7 +7,7 @@ const int Servopin = 15;
 Servo myServo;
 
 void setup() {
-  for(int i = 0; i < 4; i++)
+  for(int i = 4; i < 8; i++)
   {
     ledcSetup(i, 12800, 8);
     ledcAttachPin(motorPin[i], i);
@@ -20,21 +20,21 @@ void setmotor(int speed)
 {
   if(speed > 50)
   {
-    ledcWrite(0, speed);
-    ledcWrite(1, 0);
-    ledcWrite(2, speed);
-    ledcWrite(3, 0);
+    ledcWrite(4, speed);
+    ledcWrite(5, 0);
+    ledcWrite(6, speed);
+    ledcWrite(7, 0);
   }
   else if(abs(speed) > 50)
   {
-    ledcWrite(0, 0);
-    ledcWrite(1, abs(speed));
-    ledcWrite(2, 0);
-    ledcWrite(3, abs(speed));
+    ledcWrite(4, 0);
+    ledcWrite(5, abs(speed));
+    ledcWrite(6, 0);
+    ledcWrite(7, abs(speed));
   }
   else
   {
-    for(int i = 0; i < 4; i++)
+    for(int i = 4; i < 8; i++)
     {
       ledcWrite(i, 0);
     }
@@ -51,8 +51,8 @@ void loop() {
   // {
   //   ledcWrite(i, 200);
   // }
-  ledcWrite(0, 0);
-  ledcWrite(1, 200);
-  ledcWrite(2, 0);
-  ledcWrite(3, 200);
+  ledcWrite(4, 0);
+  ledcWrite(5, 200);
+  ledcWrite(6, 0);
+  ledcWrite(7, 200);
 }
