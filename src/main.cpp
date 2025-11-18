@@ -43,16 +43,18 @@ void setmotor(int speed)
 
 void Handleservo(int angle)
 {
-  // myServo.write(angle / 10 + 90);
+  int servoangle = (int)(angle / 10) + 90;
+  myServo.write(servoangle);
 }
 
 void loop() {
-  // for(int i = 0; i < 4; i++)
-  // {
-  //   ledcWrite(i, 200);
-  // }
   ledcWrite(4, 0);
   ledcWrite(5, 200);
   ledcWrite(6, 0);
   ledcWrite(7, 200);
+
+  myServo.write(90);
+  delay(1000);
+  myServo.write(0);
+  delay(1000);
 }
