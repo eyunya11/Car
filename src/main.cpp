@@ -1,5 +1,6 @@
 #include "Arduino.h"
 #include "ESP32_Servo.h"
+#include "PS4Controller.h"
 
 const int motorPin[4] = {34, 35, 32, 33};
 const int Servopin = 15;
@@ -13,6 +14,7 @@ void setup() {
     ledcAttachPin(motorPin[i], i + 4);
   }
 
+  PS4.begin("01:02:03:04:05:06");
   myServo.attach(Servopin);
 }
 
