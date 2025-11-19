@@ -1,4 +1,4 @@
-#include <Arduino.h>
+#include "Arduino.h"
 #include "ESP32_Servo.h"
 
 const int motorPin[4] = {34, 35, 32, 33};
@@ -7,10 +7,10 @@ const int Servopin = 15;
 Servo myServo;
 
 void setup() {
-  for(int i = 4; i < 8; i++)
+  for(int i = 0; i < 4; i++)
   {
-    ledcSetup(i, 12800, 8);
-    ledcAttachPin(motorPin[i], i);
+    ledcSetup(i + 4, 12800, 8);
+    ledcAttachPin(motorPin[i], i + 4);
   }
 
   myServo.attach(Servopin);
