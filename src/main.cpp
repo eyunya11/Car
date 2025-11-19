@@ -7,7 +7,8 @@ const int Servopin = 15;
 
 Servo myServo;
 
-void setup() {
+void setup()
+{
   for(int i = 0; i < 4; i++)
   {
     ledcSetup(i + 4, 12800, 8);
@@ -49,7 +50,8 @@ void Handleservo(int angle)
   myServo.write(servoangle);
 }
 
-void loop() {
+void loop()
+{
   ledcWrite(4, 0);
   ledcWrite(5, 200);
   ledcWrite(6, 0);
