@@ -4,6 +4,7 @@
 
 const int motorPin[4] = {34, 35, 32, 33};
 const int Servopin = 15;
+const int MAX_SPEED = 255;
 
 Servo myServo;
 
@@ -15,11 +16,11 @@ void setup()
     ledcAttachPin(motorPin[i], i + 4);
   }
 
-  PS4.begin("01:02:03:04:05:06");
+  // PS4.begin("01:02:03:04:05:06");
   myServo.attach(Servopin);
 }
 
-void setmotor(int speed)
+void Setmotor(int speed)
 {
   if(speed > 50)
   {
@@ -44,6 +45,12 @@ void setmotor(int speed)
   }
 }
 
+int Getspeed(int Lstick)
+{
+  int power = (int)(Lstick / 128.0 * MAX_SPEED);
+  return power;
+}
+
 void Handleservo(int angle)
 {
   int servoangle = (int)(angle / 10) + 90;
@@ -52,10 +59,7 @@ void Handleservo(int angle)
 
 void loop()
 {
-  ledcWrite(4, 0);
-  ledcWrite(5, 200);
-  ledcWrite(6, 0);
-  ledcWrite(7, 200);
+  Setmotor(200);
 
   myServo.write(90);
   delay(1000);
